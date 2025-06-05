@@ -10,6 +10,7 @@ import {
   Platform,
   TouchableOpacity,
   StatusBar,
+  Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import CheckBox from 'expo-checkbox';
@@ -56,7 +57,14 @@ export default function TodoScreen() {
   };
 
   const handleSubmit = async () => {
-    if (title.length < 3 || !dueDate) return;
+    if (title.length < 3) {
+      Alert.alert('Judul terlalu pendek', 'Judul kegiatan harus minimal 3 karakter.');
+      return;
+    }
+    if (!dueDate) {
+      Alert.alert('Tanggal belum dipilih', 'Silakan pilih tanggal kegiatan.');
+      return;
+    }
 
     if (isEditing && editingId !== null) {
       await axios.put(`${api}/${editingId}`, {
@@ -177,12 +185,12 @@ export default function TodoScreen() {
               dropdownIconColor="#a5b4fc"
               style={{
                 color: '#a5b4fc',
-                backgroundColor: '#111827', 
+                backgroundColor: '#111827',
                 height: 50,
               }}
               itemStyle={{
                 color: '#a5b4fc',
-                backgroundColor: '#111827', 
+                backgroundColor: '#111827',
               }}
               mode="dropdown"
             >

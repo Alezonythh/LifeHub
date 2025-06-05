@@ -4,6 +4,7 @@ import { FlatList, Image, Text, View, Modal, TouchableOpacity, ScrollView, Linki
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 
+
 const placeholderImg = "https://via.placeholder.com/400x200?text=No+Image";
 
 type Article = {
